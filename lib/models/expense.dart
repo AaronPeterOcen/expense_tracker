@@ -1,10 +1,21 @@
+import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
+import 'package:intl/intl.dart';
+
+final dateFormatter = DateFormat.yMd();
 
 const uuid = Uuid();
 
 // Define an enumeration named Category to represent various expense categories.
 // Enumeration values representing different categories
 enum Category { food, travel, outing, work }
+
+const categoryIcons = {
+  Category.food: Icons.lunch_dining_outlined,
+  Category.travel: Icons.motorcycle_outlined,
+  Category.outing: Icons.movie_creation_outlined,
+  Category.work: Icons.laptop_chromebook_outlined,
+};
 
 class Expense {
   Expense(
@@ -20,4 +31,8 @@ class Expense {
   final double amount;
   final DateTime date;
   final Category category;
+
+  String get formattedDate {
+    return dateFormatter.format(date);
+  }
 }
