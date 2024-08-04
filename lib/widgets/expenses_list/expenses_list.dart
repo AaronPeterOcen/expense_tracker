@@ -1,4 +1,5 @@
 import 'package:expense_tracker/models/expense.dart';
+import 'package:expense_tracker/widgets/expenses_list/expenses_item.dart';
 import 'package:flutter/material.dart';
 // Expense
 
@@ -16,13 +17,11 @@ class ExpensesList extends StatelessWidget {
       // Set the number of items in the list to the length of the expenses list
       itemCount: expenses.length,
       // Define how each item in the list should be built
-      itemBuilder: (ctx, index) {
-        // Create a Text widget to display the title of each expense
-        return Text(
-          expenses[index]
-              .title, // Access the title property of the expense at the current index
-        );
-      },
+      itemBuilder: (ctx, index) =>
+          // Create a Text widget to display the title of each expense
+          ExpensesItem(expenses[index]
+              // Access the title property of the expense at the current index
+              ),
     );
   }
 }
