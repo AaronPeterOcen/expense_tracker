@@ -29,9 +29,10 @@ class ExpensesList extends StatelessWidget {
         onDismissed: (direction) {
           onRemoveExpense(expenses[index]);
         },
-        child: ExpensesItem(expenses[index]
-            // Access the title property of the expense at the current index
-            ),
+        child: ExpensesItem(
+          expenses[index],
+          // Access the title property of the expense at the current index
+        ),
       ),
     );
   }
