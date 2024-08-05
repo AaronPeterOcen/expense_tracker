@@ -6,9 +6,14 @@ import 'package:flutter/material.dart';
 // FlutterError
 
 class ExpensesList extends StatelessWidget {
-  const ExpensesList({super.key, required this.expenses});
+  const ExpensesList({
+    super.key,
+    required this.expenses,
+    required this.onRemoveExpense,
+  });
 
   final List<Expense> expenses;
+  final void Function(Expense expense) onRemoveExpense;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +24,15 @@ class ExpensesList extends StatelessWidget {
       // Define how each item in the list should be built
       itemBuilder: (ctx, index) =>
           // Create a Text widget to display the title of each expense
-          ExpensesItem(expenses[index]
-              // Access the title property of the expense at the current index
-              ),
+          Dismissible(
+        key: ValueKey(expenses[index]),
+        onDismissed: (direction) {
+          onRemoveExpense(expenses[index]);
+        },
+        child: ExpensesItem(expenses[index]
+            // Access the title property of the expense at the current index
+            ),
+      ),
     );
   }
 }
