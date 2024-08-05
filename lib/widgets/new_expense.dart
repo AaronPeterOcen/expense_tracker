@@ -51,17 +51,20 @@ class _NewExpenseState extends State<NewExpense> {
           ),
           Row(
             children: [
-              TextButton(
-                onPressed: () {},
-                child: const Text('Cancel'),
-              ),
               ElevatedButton(
                 onPressed: () {
                   print(_textInputController.text);
                   print(_amountInputController.text);
                 },
                 child: const Text('Save Expense'),
-              )
+              ),
+              TextButton(
+                onPressed: () {
+                  // using navigator.pop to close the modal manually
+                  Navigator.pop(context);
+                },
+                child: const Text('Cancel'),
+              ),
             ],
           ),
         ],
