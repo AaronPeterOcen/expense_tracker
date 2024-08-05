@@ -26,7 +26,7 @@ class _NewExpenseState extends State<NewExpense> {
   final _textInputController = TextEditingController();
   final _amountInputController = TextEditingController();
   DateTime? _selectedDate;
-  Category _selectedCategory = Category.outing;
+  Category _selectedCategory = Category.leisure;
 
   @override
   void dispose() {

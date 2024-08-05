@@ -8,12 +8,12 @@ const uuid = Uuid();
 
 // Define an enumeration named Category to represent various expense categories.
 // Enumeration values representing different categories
-enum Category { food, travel, outing, work }
+enum Category { food, travel, leisure, work }
 
 const categoryIcons = {
   Category.food: Icons.lunch_dining_outlined,
-  Category.travel: Icons.motorcycle_outlined,
-  Category.outing: Icons.movie_creation_outlined,
+  Category.travel: Icons.flight_outlined,
+  Category.leisure: Icons.movie_creation_outlined,
   Category.work: Icons.laptop_chromebook_outlined,
 };
 
