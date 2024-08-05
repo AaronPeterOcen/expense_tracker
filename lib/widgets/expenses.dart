@@ -1,5 +1,6 @@
 import 'package:expense_tracker/widgets/expenses_list/expenses_list.dart';
 import 'package:expense_tracker/models/expense.dart';
+import 'package:expense_tracker/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
 
 // FlutterError
@@ -29,7 +30,7 @@ class _ExpensesState extends State<Expenses> {
 
   void _openExpenseAdd() {
     showModalBottomSheet(
-        context: context, builder: (xtx) => const Text('lorem ipsum'));
+        context: context, builder: (xtx) => const NewExpense());
   }
 
   @override
