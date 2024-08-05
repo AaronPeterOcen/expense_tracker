@@ -1,4 +1,9 @@
+// import 'package:expense_tracker/models/expense.dart';
 import 'package:flutter/material.dart';
+
+import 'package:intl/intl.dart';
+
+final dateFormatter = DateFormat.yMd();
 
 class NewExpense extends StatefulWidget {
   const NewExpense({super.key});
@@ -18,6 +23,7 @@ class _NewExpenseState extends State<NewExpense> {
   // Create a TextEditingController to manage the text input
   final _textInputController = TextEditingController();
   final _amountInputController = TextEditingController();
+  DateTime? _selectedDate;
 
   @override
   void dispose() {
@@ -28,15 +34,13 @@ class _NewExpenseState extends State<NewExpense> {
     super.dispose();
   }
 
-  void _enterDate() {
+  void _enterDate() async {
     // Get the current date and time
     final now = DateTime.now();
-
     // Calculate the date one year before today
     final firstDate = DateTime(now.year - 1, now.month, now.day);
-
     // Show a date picker dialog
-    showDatePicker(
+    final pickedDate = await showDatePicker(
       context: context, // The BuildContext to use for the dialog
       initialDate:
           now, // The initial date to display in the picker (today's date)
@@ -44,6 +48,10 @@ class _NewExpenseState extends State<NewExpense> {
           firstDate, // The earliest selectable date (one year before today)
       lastDate: now, // The latest selectable date (today's date)
     );
+
+    setState(() {
+      _selectedDate = pickedDate;
+    });
   }
 
   @override
@@ -79,7 +87,11 @@ class _NewExpenseState extends State<NewExpense> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Text('Select Date'),
+                    Text(
+                      _selectedDate == null
+                          ? 'No Date Selected'
+                          : dateFormatter.format(_selectedDate!),
+                    ),
                     IconButton(
                       onPressed: _enterDate,
                       icon: const Icon(Icons.date_range_outlined),
