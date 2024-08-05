@@ -28,6 +28,24 @@ class _NewExpenseState extends State<NewExpense> {
     super.dispose();
   }
 
+  void _enterDate() {
+    // Get the current date and time
+    final now = DateTime.now();
+
+    // Calculate the date one year before today
+    final firstDate = DateTime(now.year - 1, now.month, now.day);
+
+    // Show a date picker dialog
+    showDatePicker(
+      context: context, // The BuildContext to use for the dialog
+      initialDate:
+          now, // The initial date to display in the picker (today's date)
+      firstDate:
+          firstDate, // The earliest selectable date (one year before today)
+      lastDate: now, // The latest selectable date (today's date)
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -41,13 +59,35 @@ class _NewExpenseState extends State<NewExpense> {
               label: Text('Title'),
             ),
           ),
-          TextField(
-            controller: _amountInputController,
-            keyboardType: TextInputType.number,
-            decoration: const InputDecoration(
-              prefixText: '\$ ',
-              label: Text('Amount'),
-            ),
+          Row(
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: _amountInputController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
+                    prefixText: '\$ ',
+                    label: Text('Amount'),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 15,
+              ),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text('Select Date'),
+                    IconButton(
+                      onPressed: _enterDate,
+                      icon: const Icon(Icons.date_range_outlined),
+                    )
+                  ],
+                ),
+              )
+            ],
           ),
           Row(
             children: [
