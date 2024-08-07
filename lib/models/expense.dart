@@ -36,3 +36,33 @@ class Expense {
     return dateFormatter.format(date);
   }
 }
+
+// Define the ExpenseBucket class
+class ExpenseBucket {
+  // Constructor for the ExpenseBucket class
+  const ExpenseBucket({
+    required this.category, // Required parameter for the expense category
+    required this.expenses, // Required parameter for the list of expenses
+  });
+
+  // Property to store the category of the expenses
+  final Category category;
+
+  // Property to store the list of expenses
+  final List<Expense> expenses;
+
+  // Getter to calculate the total amount of expenses in the bucket
+  double get totalExpenses {
+    // Initialize the sum variable to 0
+    double sum = 0;
+
+    // Iterate through each expense in the expenses list
+    for (final expense in expenses) {
+      // Add the amount of the current expense to the sum
+      sum += expense.amount;
+    }
+
+    // Return the total sum of the expenses
+    return sum;
+  }
+}
