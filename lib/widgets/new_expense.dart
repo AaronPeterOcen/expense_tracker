@@ -68,7 +68,11 @@ class _NewExpenseState extends State<NewExpense> {
         builder: (ctx) => AlertDialog(
           title: const Text('Wrong Input'),
           content: const Text(
-              'Please make sure you entered the required information'),
+            'Please make sure you entered the required information',
+            style: TextStyle(
+                // color: Color.fromARGB(255, 32, 81, 33),
+                ),
+          ),
           actions: [
             TextButton(
               onPressed: () {
@@ -147,6 +151,7 @@ class _NewExpenseState extends State<NewExpense> {
             children: [
               DropdownButton(
                 value: _selectedCategory,
+                // dropdownColor: TextStyle(),
                 items: Category.values
                     .map(
                       (category) => DropdownMenuItem(
