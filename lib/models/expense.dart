@@ -45,6 +45,15 @@ class ExpenseBucket {
     required this.expenses, // Required parameter for the list of expenses
   });
 
+// Define a named constructor for the ExpenseBucket class to filter expenses by category
+  ExpenseBucket.forCategory(List<Expense> allExpenses, this.category)
+      // Initialize the expenses property by filtering the allExpenses list
+      : expenses = allExpenses
+            // Use the where method to filter expenses that match the category
+            .where((expense) => expense.category == category)
+            // Convert the filtered iterable to a list
+            .toList();
+
   // Property to store the category of the expenses
   final Category category;
 
