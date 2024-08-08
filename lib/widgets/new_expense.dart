@@ -1,5 +1,6 @@
 // import 'package:expense_tracker/models/expense.dart';
 import 'package:expense_tracker/models/expense.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NewExpense extends StatefulWidget {
@@ -63,10 +64,37 @@ class _NewExpenseState extends State<NewExpense> {
     if (_textInputController.text.trim().isEmpty ||
         isAmountValid ||
         _selectedDate == null) {
+      // showCupertinoDialog(
+      //   context: context,
+      //   builder: (ctc) => CupertinoAlertDialog(
+      //     title: const Text(
+      //       'Wrong Input',
+      //       style: TextStyle(
+      //           fontWeight: FontWeight.w600,
+      //           color: Color.fromARGB(255, 26, 122, 29)),
+      //     ),
+      //     content: const Text(
+      //         'Please make sure you entered the required information'),
+      //     actions: [
+      //       TextButton(
+      //         onPressed: () {
+      //           Navigator.pop(ctx);
+      //         },
+      //         child: Text('Continue'),
+      //       ),
+      //     ],
+      //   ),
+      // );
+
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
-          title: const Text('Wrong Input'),
+          title: const Text(
+            'Wrong Input',
+            style: TextStyle(
+                fontWeight: FontWeight.w600,
+                color: Color.fromARGB(255, 26, 122, 29)),
+          ),
           content: const Text(
             'Please make sure you entered the required information',
             style: TextStyle(
